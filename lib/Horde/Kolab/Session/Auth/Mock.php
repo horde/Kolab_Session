@@ -26,7 +26,7 @@
  * @link     http://pear.horde.org/index.php?package=Kolab_Session
  */
 class Horde_Kolab_Session_Auth_Mock
-implements Horde_Kolab_Session_Auth_Interface
+implements Horde_Interfaces_Registry_Auth
 {
     /**
      * The user this instance will report.
@@ -46,12 +46,42 @@ implements Horde_Kolab_Session_Auth_Interface
     }
 
     /**
-     * Get the current user ID.
+     * Returns the currently logged in user, if there is one.
      *
-     * @return string The ID of the current user.
+     * @param string $format  The return format, defaults to the unique Horde
+     *                        ID. Alternative formats:
+     *                        - bare: Horde ID without any domain information
+     *                          (e.g., foo@example.com would be returned as
+     *                          'foo').
+     *                        - domain: Domain of the Horde ID (e.g.,
+     *                          foo@example.com would be returned as
+     *                          'example.com').
+     *                        - original: The username used to originally login
+     *                          to Horde.
+     *
+     * @return mixed  The user ID or false if no user is logged in.
      */
-    public function getCurrentUser()
+    public function getAuth($format = null)
     {
-        return $this->_user;
+        if (empty($this->_user)) {
+            return false;
+        }
+
+        $user = $this->_user;
+
+        switch ($format) {
+        case 'bare':
+            return (($pos = strpos($user, '@')) === false)
+                ? $user
+                : substr($user, 0, $pos);
+
+        case 'domain':
+            return (($pos = strpos($user, '@')) === false)
+                ? false
+                : substr($user, $pos + 1);
+
+        default:
+            return $user;
+        }
     }
 }
