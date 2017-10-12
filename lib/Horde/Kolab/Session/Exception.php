@@ -8,7 +8,6 @@
  * @package  Kolab_Session
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Session
  */
 
 /**
@@ -23,7 +22,6 @@
  * @package  Kolab_Session
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @link     http://pear.horde.org/index.php?package=Kolab_Session
  */
 class Horde_Kolab_Session_Exception extends Horde_Exception
 {
