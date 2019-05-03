@@ -2,7 +2,7 @@
 id: Kolab_Session
 name: Kolab_Session
 full: Kolab session management library
-description: This package stores Kolab specific user data in the session.
+description: A library to store Kolab specific user data in the session.
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Kolab_Session
