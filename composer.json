@@ -1,7 +1,7 @@
 {
-    "name": "horde/kolab-session",
+    "name": "horde/kolab_session",
     "description": "Kolab session management library",
-    "type": "library",
+    "type": "horde-library",
     "homepage": "https://www.horde.org/libraries/Horde_Kolab_Session",
     "license": "LGPL-2.1",
     "authors": [
@@ -12,26 +12,23 @@
         }
     ],
     "version": "2.0.4",
-    "time": "2017-11-11",
+    "time": "2020-10-27",
     "repositories": [
         {
-            "type": "pear",
-            "url": "https://pear.horde.org"
+            "type": "composer",
+            "url": "https://horde-satis.maintaina.com"
         }
     ],
     "require": {
+        "horde/horde-installer-plugin": "dev-master",
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Exception": "^2"
+        "horde/exception": "dev-master"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Imap_Client": "^2",
-        "pear-pear.horde.org/Horde_Kolab_Server": "^2",
-        "pear-pear.horde.org/Horde_Log": "^2",
-        "pear-pear.horde.org/Horde_Test": "^2.1"
-    },
-    "replace": {
-        "pear-pear.horde.org/Horde_Kolab_Session": "2.*",
-        "pear-horde/Horde_Kolab_Session": "2.*"
+        "horde/imap_client": "^2",
+        "horde/kolab_server": "^2",
+        "horde/log": "^2",
+        "horde/test": "^2.1"
     },
     "autoload": {
         "psr-0": {
