@@ -34,11 +34,8 @@ implements Horde_Kolab_Session_Storage
      */
     public function load()
     {
-        if (isset($_SESSION['kolab_session'])) {
-            return $_SESSION['kolab_session'];
-        } else {
-            return array();
-        }
+        $data = $GLOBALS['session']->get('kolab_session', 'data');
+        return is_array($data) ? $data : array();
     }
 
     /**
@@ -50,6 +47,6 @@ implements Horde_Kolab_Session_Storage
      */
     public function save(array $session_data)
     {
-        $_SESSION['kolab_session'] = $session_data;
+        $GLOBALS['session']->set('kolab_session', 'data', $session_data);
     }
 }
