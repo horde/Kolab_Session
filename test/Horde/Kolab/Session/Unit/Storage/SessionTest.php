@@ -27,17 +27,18 @@ class Horde_Kolab_Session_Unit_Storage_SessionTest extends Horde_Kolab_Session_T
 {
     public function setUp()
     {
-        $_SESSION = array();
+        require_once __DIR__ . '/../../TestSession.php';
+        $GLOBALS['session'] = new Horde_Kolab_Session_Test_Session();
     }
 
     public function tearDown()
     {
-        unset($_SESSION['kolab_session']);
+        unset($GLOBALS['session']);
     }
 
     public function testLoad()
     {
-        $_SESSION['kolab_session'] = array('data');
+        $GLOBALS['session']->set('kolab_session', 'data', array('data'));
         $storage = new Horde_Kolab_Session_Storage_Session();
         $this->assertEquals($storage->load(), array('data'));
     }
@@ -52,6 +53,6 @@ class Horde_Kolab_Session_Unit_Storage_SessionTest extends Horde_Kolab_Session_T
     {
         $storage = new Horde_Kolab_Session_Storage_Session();
         $storage->save(array('data'));
-        $this->assertEquals($_SESSION['kolab_session'], array('data'));
+        $this->assertEquals($GLOBALS['session']->get('kolab_session', 'data'), array('data'));
     }
 }
